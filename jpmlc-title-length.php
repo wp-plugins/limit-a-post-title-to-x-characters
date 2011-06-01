@@ -43,7 +43,7 @@ function jpmlc_boite_affiche_caracteres(){
 function jpmlc_inclure_scripts(){
 	wp_enqueue_style('jpmlc_css',WP_PLUGIN_URL . '/jpmlc-title-length/css/jpmlc-style.css');
 	wp_enqueue_script('jpmlc_js',WP_PLUGIN_URL . '/jpmlc-title-length/js/jpmlc-script.js',array('jquery'),'1.a',true );
-	//load_plugin_textdomain('jpmlc-title-length', false, '/wp-content/plugins/jpmlc-title-length/languages/');
+	load_plugin_textdomain('jpmlc-title-length', false, '/wp-content/plugins/jpmlc-title-length/languages/');
 }
 function retour_longueur_titre(){
 	global $post;

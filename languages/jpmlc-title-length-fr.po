@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jpmlc-title-length\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-31 16:27-0500\n"
+"PO-Revision-Date: 2011-05-31 16:30-0500\n"
+"Last-Translator: \n"
+"Language-Team: Jean-Philippe Murray <himself@jpmurray.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: C:\\Documents and Settings\\jpmurray\\Bureau\\wordpress\\jpmlc-title-length\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: jpmlc-title-length.php:43
+#: jpmlc-title-length.php:88
+msgid "Limit post titles length"
+msgstr "Limiter la longueur des titres d'articles"
+
+#: jpmlc-title-length.php:46
+msgid "Title's character count"
+msgstr "Nombre de caractères du titre"
+
+#: jpmlc-title-length.php:73
+msgid "Option saved"
+msgstr "Options enregistrées"
+
+#: jpmlc-title-length.php:80
+msgid "Empty the title field"
+msgstr "Vider le champs titre"
+
+#: jpmlc-title-length.php:103
+msgid "Save"
+msgstr "Enregistrer"
+
