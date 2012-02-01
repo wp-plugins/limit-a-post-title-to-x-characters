@@ -41,8 +41,8 @@ function jpmlc_boite_affiche_caracteres(){
 	add_meta_box('compter-caracteres-titre',__('Title\'s character count','jpmlc-title-length'), 'jpmlc_conteur', 'post', 'side', 'high');
 }
 function jpmlc_inclure_scripts(){
-	wp_enqueue_style('jpmlc_css',WP_PLUGIN_URL . '/jpmlc-title-length/css/jpmlc-style.css');
-	wp_enqueue_script('jpmlc_js',WP_PLUGIN_URL . '/jpmlc-title-length/js/jpmlc-script.js',array('jquery'),'1.a',true );
+	wp_enqueue_style('jpmlc_css',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/css/jpmlc-style.css');
+	wp_enqueue_script('jpmlc_js',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/js/jpmlc-script.js',array('jquery'),'1.a',true );
 	//load_plugin_textdomain('jpmlc-title-length', false, '/wp-content/plugins/jpmlc-title-length/languages/');
 }
 function retour_longueur_titre(){

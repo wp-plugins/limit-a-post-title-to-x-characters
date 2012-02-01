@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 			//visa, ça va !
 			return false;
 		}else{
-			alert('Vous dépassez la limite permise de caractères.'+unCompteur);
+			alert('You are over the maximum allowed characters for the title!');
 			return false;
 
 		}
