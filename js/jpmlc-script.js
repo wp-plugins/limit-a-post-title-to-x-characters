@@ -19,7 +19,10 @@ jQuery(document).ready(function(){
     jQuery('#publish').mousedown(function() {
 		if(unCompteur < maximum){
 			//visa, ça va !
-			return false;
+			//check si hashtags
+			var titre=jQuery('#title').val();
+			var hashtags=titre.indexOf('#');
+			if(hashtags==-1){alert('Où sont les hashtags?');return false;}
 		}else{
 			alert('You are over the maximum allowed characters for the title!');
 			return false;

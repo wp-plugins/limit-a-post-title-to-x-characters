@@ -28,14 +28,7 @@ Nothing be see here... Yet !
 
 == Changelog ==
 
-= 1.1.1 =
-* File path to some included files corrected.
-* Corrected typos in the alerts.
-
-= 1.1 =
-* Correcting codes that could make the plugin break on certain situations.
-
-= 1.0 =
-* Release. Everything seems to work !
+= 0.1 =
+* Branche to test custom options for a client (ccmm)
 
 == Upgrade Notice ==
