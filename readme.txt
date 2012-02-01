@@ -28,6 +28,10 @@ Nothing be see here... Yet !
 
 == Changelog ==
 
+= 1.1.1 =
+* File path to some included files corrected.
+* Corrected typos in the alerts.
+
 = 1.1 =
 * Correcting codes that could make the plugin break on certain situations.
 
