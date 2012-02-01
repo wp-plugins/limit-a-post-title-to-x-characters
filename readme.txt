@@ -4,7 +4,7 @@ Donate link: http://jpmurray.net/wordpress-plugin-limit-a-post-title-to-x-charac
 Tags: post title, title, count, counter, twitter
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 Limit posts titles length as defined in options. Shoes the current caracter count and stop the publication process if over.
 
