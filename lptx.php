@@ -3,7 +3,7 @@
 Plugin Name: Limit a Post Title to X Characters
 Plugin URI: http://pasunecompagnie.com/limit-a-post-title-to-x-characters/
 Description: Limit posts title length as defined in options. Shows the current character count and stops the publication process if the length goes over.
-Version: 1.1.1
+Version: 1.1
 Author: Jean-Philippe Murray
 Author URI: http://jpmurray.net/
 */
