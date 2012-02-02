@@ -1,34 +1,50 @@
 === Limit a post title to X characters ===
 Contributors: jpmurray
-Donate link: http://jpmurray.net/wordpress-plugin-limit-a-post-title-to-x-characters/
+Donate link: http://pasunecompagnie.com/limit-a-post-title-to-x-characters/
 Tags: post title, title, count, counter, twitter
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 1.1.1
-
-Limit posts titles length as defined in options. Shoes the current caracter count and stop the publication process if over.
+Stable tag: 1.2
 
 == Description ==
 
-This plugin will limit a post title to a predefined number of characters. While showing at the right of the post title the current number of characters, it will stop Wordpress from publishing the post if the title is over the maximum allowed.
+Limit posts title length as defined in options. Shows the current character count and stops the publication process if the length goes over.
 
 Usefull to limit title characters dues to theme restrictions, or Twitter automatic posting, for examples.
 
-I can provide limited support <a href="http://jpmurray.net/wordpress-plugin-limit-a-post-title-to-x-characters/">here</a>
+I can provide limited support <a href="http://pasunecompagnie.com/limit-a-post-title-to-x-characters/">here</a>. You can also submit bug reports to the same address.
+
+== Credits ==
+
+Thanks to...
+
+* [Paul Solomon](http://InsiteWebsite.com/) *for tweaking the CSS and correcting some of my typos and spelling mistakes !*
 
 == Installation ==
 
 Install this plugin by going to Plugins >> Add New >> and type this plugin's name, from your own Wordpress installation.
 
-== Frequently Asked Questions ==
+**Some file names changed in version 1.2. People upgrading from version 1.1.1 and earlier *might* have to do a clean install.**
 
-Nothing be see here... Yet !
-
-== Screenshots ==
 
 == Changelog ==
 
-= 0.1 =
-* Branche to test custom options for a client (ccmm)
+= 1.2 =
+* Added an option page for the plugin.
+* Administrators can define the limit of character the plugin will check in the option page.
+* Administrators can define if they are subject to the plugin limitation or not.
+* Changed plugin internal naming convention.
+* Changed some of the plugin files' name. **Users upgrading from version 1.1.1 and earlier can have trouble due to name changes. They should do a clean install instead**
+* Removed unnecessary files rendered useless.
+* Changed style of the counter box.
+* Corrected some typos and spelling mistakes.
 
-== Upgrade Notice ==
+= 1.1.1 =
+* File path to some included files corrected.
+* Corrected typos in the alerts.
+
+= 1.1 =
+* Correcting codes that could make the plugin break on certain situations.
+
+= 1.0 =
+* Release. Everything seems to work !
