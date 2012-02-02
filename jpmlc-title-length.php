@@ -27,12 +27,32 @@ add_action('admin_menu', 'jpmlc_options');
 add_action('add_meta_boxes', 'jpmlc_boite_affiche_caracteres');
 add_action('init', 'jpmlc_inclure_scripts');
 
+add_action( 'admin_menu' , 'remove_post_custom_fields' );
+add_action('do_meta_boxes', 'customposttype_image_box'); //pour enlever la meta d'image à la une
+
 register_activation_hook( __FILE__, 'ajout_options_defaut' );
 register_deactivation_hook( __FILE__, 'detruire_options_defaut' );
 
 if( $_POST['action'] == 'jpmlc_enregistrer' ):
 	add_action( 'init','jpmlc_sauvegarder_options');
 endif;
+
+function remove_post_custom_fields() {
+	if(!current_user_can('administrator')) {
+		remove_meta_box( 'categorydiv' , 'post' , 'normal' ); 
+		remove_meta_box( 'tagsdiv-post_tag' , 'post' , 'normal' ); 
+		remove_meta_box( 'stc-publish-div' , 'post' , 'normal' ); 
+		remove_meta_box( 'submitdiv', 'post', 'side' );
+	}
+}
+
+function customposttype_image_box() {
+
+	remove_meta_box( 'postimagediv', 'post', 'side' );
+
+	//add_meta_box('postimagediv', __('Custom Image'), 'post_thumbnail_meta_box', 'customposttype', 'normal', 'high');
+
+}
 
 function jpmlc_options() {
 	add_options_page(__('Limit post titles length','jpmlc-title-length'), __('Limit post titles length','jpmlc-title-length'), 'manage_options', 'jpmlc_options', 'jpmlc_page_options');
