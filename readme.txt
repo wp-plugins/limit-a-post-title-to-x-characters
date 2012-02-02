@@ -35,8 +35,8 @@ Nothing be see here... Yet !
 * Changed plugin internal naming convention.
 * Changed some of the plugin files' name. **Users upgrading from version 1.1.1 and earlier can have trouble due to name changes. They should do a clean install instead**
 * Removed unnecessary files rendered useless.
-* Changed style of the counter box. (*Thanks paul@insitewebsite.com !*)
-* Corrected some typos and spelling mistakes. (*Thanks paul@insitewebsite.com !*)
+* Changed style of the counter box.
+* Corrected some typos and spelling mistakes.
 
 = 1.1.1 =
 * File path to some included files corrected.
@@ -49,3 +49,9 @@ Nothing be see here... Yet !
 * Release. Everything seems to work !
 
 == Upgrade Notice ==
+
+**Some file names changed in version 1.2. People upgrading from version 1.1.1 and earlier *might* have to do a clean install.**
+
+== Thanks ==
+
+* [Paul Solomon](http://InsiteWebsite.com/) *for tweaking the CSS and correcting some of my typos and spelling mistakes !*
