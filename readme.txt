@@ -10,9 +10,7 @@ Stable tag: 1.2
 
 Limit posts title length as defined in options. Shows the current character count and stops the publication process if the length goes over.
 
-Usefull to limit title characters dues to theme restrictions, or Twitter automatic posting, for examples.
-
-I can provide limited support <a href="http://pasunecompagnie.com/limit-a-post-title-to-x-characters/">here</a>. You can also submit bug reports to the same address.
+This release is used to test custom options for a client (ccmm).
 
 == Credits ==
 
@@ -22,14 +20,12 @@ Thanks to...
 
 == Installation ==
 
-Install this plugin by going to Plugins >> Add New >> and type this plugin's name, from your own Wordpress installation.
-
-**Some file names changed in version 1.2. People upgrading from version 1.1.1 and earlier *might* have to do a clean install.**
+DO NOT INSTALL FROM SUBVERSION OR WORDPRESS PLUGIN DIRECTORY. Only install from trusted folder on developer's end.
 
 
 == Changelog ==
 
-= 1.2 =
+= 0.1.2 =
 * Added an option page for the plugin.
 * Administrators can define the limit of character the plugin will check in the option page.
 * Administrators can define if they are subject to the plugin limitation or not.
@@ -39,12 +35,12 @@ Install this plugin by going to Plugins >> Add New >> and type this plugin's nam
 * Changed style of the counter box.
 * Corrected some typos and spelling mistakes.
 
-= 1.1.1 =
+= 0.1.1.1 =
 * File path to some included files corrected.
 * Corrected typos in the alerts.
 
-= 1.1 =
+= 0.1.1 =
 * Correcting codes that could make the plugin break on certain situations.
 
-= 1.0 =
+= 0.1.0 =
 * Release. Everything seems to work !
