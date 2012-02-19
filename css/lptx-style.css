@@ -1,11 +1,6 @@
-/*#lptx-conteneur{height: 45px;}
-#lptx-conteur{font-size:2em;text-align:center;float:left;}
-#lptx-plus #vider-titre{font-size:1em !important;}
-.lptx-depasse{color:#ff0000}*/
-
-#lptx-conteneur{/*height:45px;*/padding:0 0 6px 0;}
-#lptx-conteur{font-size:2em;text-align:center;float:left;color:green;border:1px solid silver;padding:3px;background-color:#fff;margin:0 0.3em 0 0;}
-#lptx-conteur.lptx-depasse{color:#ff0000;text-decoration:line-through;background-color:#ffffe1;border-color:red;font-weight:bold;}
-#lptx-plus{text-align:right;clear:none;}
-#lptx-plus #vider-titre{font-size:1em !important;}
-#lptx-conteur-admissible{float:left;font-size:1.2em;line-height:2.2em;}
+#lptx-container{/*height:45px;*/padding:0 0 6px 0;}
+#lptx-counter{font-size:2em;text-align:center;float:left;color:green;border:1px solid silver;padding:3px;background-color:#fff;margin:0 0.3em 0 0;}
+#lptx-counter.lptx-over{color:#ff0000;text-decoration:line-through;background-color:#ffffe1;border-color:red;font-weight:bold;}
+#lptx-clear{text-align:right;clear:none;}
+#lptx-clear #empty-title{font-size:1em !important;}
+#lptx-counter-available{float:left;font-size:1.2em;line-height:2.2em;}

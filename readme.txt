@@ -19,6 +19,7 @@ I can provide limited support <a href="http://pasunecompagnie.com/limit-a-post-t
 Thanks to...
 
 * [Paul Solomon](http://InsiteWebsite.com/) *for tweaking the CSS and correcting some of my typos and spelling mistakes !*
+* [marklaramee](http://wordpress.org/support/profile/marklaramee) *for the bug hunt in the character count validation !*
 
 == Installation ==
 
@@ -28,6 +29,12 @@ Install this plugin by going to Plugins >> Add New >> and type this plugin's nam
 
 
 == Changelog ==
+
+= 1.3 =
+* Changed everything in the source code that where referencing to french word so it's easier for the community to understand.
+* Fixed a bug where counter would turn falsly red when opening an already saved post / draft.
+* Link to option page in the plugin menu is fixed.
+* Character verification checks if number of character is under or equal to the limit, and not only under it.
 
 = 1.2 =
 * Added an option page for the plugin.

@@ -26,28 +26,6 @@ Author URI: http://jpmurray.net/
 */
 
 // ------------------------------------------------------------------------
-// REQUIRE MINIMUM VERSION OF WORDPRESS:                                               
-// ------------------------------------------------------------------------
-// THIS IS USEFUL IF YOU REQUIRE A MINIMUM VERSION OF WORDPRESS TO RUN YOUR
-// PLUGIN. IN THIS PLUGIN THE WP_EDITOR() FUNCTION REQUIRES WORDPRESS 3.3 
-// OR ABOVE. ANYTHING LESS SHOWS A WARNING AND THE PLUGIN IS DEACTIVATED.                    
-// ------------------------------------------------------------------------
-
-function requires_wordpress_version() {
-	global $wp_version;
-	$plugin = plugin_basename( __FILE__ );
-	$plugin_data = get_plugin_data( __FILE__, false );
-
-	if ( version_compare($wp_version, "3.0", "<" ) ) {
-		if( is_plugin_active($plugin) ) {
-			deactivate_plugins( $plugin );
-			wp_die( "'".$plugin_data['Name']."' requires WordPress 3.0 or higher, and has been deactivated! Please upgrade WordPress and try again.<br /><br />Back to <a href='".admin_url()."'>WordPress admin</a>." );
-		}
-	}
-}
-add_action( 'admin_init', 'requires_wordpress_version' );
-
-// ------------------------------------------------------------------------
 // PLUGIN PREFIX:                                                          
 // ------------------------------------------------------------------------
 
@@ -70,81 +48,84 @@ add_filter( 'plugin_action_links', 'lptx_plugin_action_links', 10, 2 );
 $options = get_option('lptx_options');
 
 // Set-up Action and Filter Hooks for the plugin itself
-add_action('add_meta_boxes', 'lptx_boite_affiche_caracteres');
-add_action('init', 'lptx_inclure_scripts'); 	
+add_action('add_meta_boxes', 'lptx_box_characterCount');
+add_action('init', 'lptx_scriptInclusion'); 	
 
 // ------------------------------------------------------------------------------
-// CALLBACK FUNCTION FOR: add_action('add_meta_boxes', 'lptx_boite_affiche_caracteres');
+// CALLBACK FUNCTION FOR: add_action('add_meta_boxes', 'lptx_box_characterCount');
 // ------------------------------------------------------------------------------
 
-function lptx_boite_affiche_caracteres(){
+function lptx_box_characterCount(){
 	$options = get_option('lptx_options');
-	if($options['admin_disable']==1) // si on à activé le pluigin, accrocher les fonctions.
+	if($options['admin_disable']==1) // if the plugin is activated, do stuff !
 	{
 		if(!current_user_can('administrator'))
 		{
-			add_meta_box('compter-caracteres-titre',__('Your title\'s character count:','lptx-title-length'), 'lptx_conteur', 'post', 'side', 'high');
+			add_meta_box('count-characters-in-title',__('Your title\'s character count:','lptx'), 'lptx_counter', 'post', 'side', 'high');
 		}
 	}
 	else if($options['admin_disable']==2)
 	{
-		add_meta_box('compter-caracteres-titre',__('Your title\'s character count:','lptx-title-length'), 'lptx_conteur', 'post', 'side', 'high');
+		add_meta_box('count-characters-in-title',__('Your title\'s character count:','lptx'), 'lptx_counter', 'post', 'side', 'high');
 	}
 }
 
 // ------------------------------------------------------------------------------
-// CALLBACK FUNCTION FOR: add_action('init', 'lptx_inclure_scripts');
+// CALLBACK FUNCTION FOR: add_action('init', 'lptx_scriptInclusion');
 // ------------------------------------------------------------------------------
-function lptx_inclure_scripts(){
+function lptx_scriptInclusion(){
 	$options = get_option('lptx_options');
-	if($options['admin_disable']==1) // si on à activé le pluigin, accrocher les fonctions.
+	if($options['admin_disable']==1) // if plugin is activated, do stuff !.
 	{
+		$traduction = array('alertMessage' => __('You are over the maximum allowed characters for the title!','lptx'));
 		if(!current_user_can('administrator'))
 		{
 			wp_enqueue_style('lptx_css',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/css/lptx-style.css');
 			wp_enqueue_script('lptx_js',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/js/lptx-script.js',array('jquery'),'1.a',true );
+			wp_localize_script('lptx_js', 'traductionFromWP', $traduction ); 
 		}
 	}
 	else if($options['admin_disable']==2)
 	{
 		wp_enqueue_style('lptx_css',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/css/lptx-style.css');
 		wp_enqueue_script('lptx_js',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/js/lptx-script.js',array('jquery'),'1.a',true );
+		wp_localize_script('lptx_js', 'traductionFromWP', $traduction ); 
 	}
 }
 
 // ------------------------------------------------------------------------------
-// CALLBACK FUNCTION FOR: add_meta_box('compter-caracteres-titre',__('Title\'s character count','lptx-title-length'), 'lptx_conteur', 'post', 'side', 'high');
+// CALLBACK FUNCTION FOR: add_meta_box('count-characters-in-title',__('Title\'s character count','lptx'), 'lptx_counter', 'post', 'side', 'high');
 // ------------------------------------------------------------------------------
 
-function lptx_conteur()
+function lptx_counter()
 {
 	$options = get_option('lptx_options');
 	?>
-	<div id="jpmlc-conteneur">
+	<div id="lptx-container">
 		<input type="hidden" id="lptx_maximum" value="<?php echo $options['char_limit']; ?>"/>
-		<div id="lptx-conteur" class="post-title-count <?php echo lptx_retour_classe_maximum(); ?>"><?php echo lptx_retour_longueur_titre(); ?></div>
-        <div id="lptx-conteur-admissible"> of <?php echo $options['char_limit']; ?></div>
-		<div id="lptx-plus">
-			<br /><br /><a id="vider-titre" href="#"><?php _e('Clear the title field','lptx-title-length'); ?></a>
+		<div id="lptx-counter" class="post-title-count <?php echo lptx_returnClassMaximum($options['char_limit']); ?>"><?php echo lptx_getTitleLength(); ?></div>
+        <div id="lptx-counter-available"> <?php _e('of','lptx'); ?> <?php echo $options['char_limit']; ?></div>
+		<div id="lptx-clear">
+			<br /><br /><a id="empty-title" href="#"><?php _e('Clear the title field','lptx'); ?></a>
 		</div>
 	</div>
 	<?php
 }
 
 // ------------------------------------------------------------------------------
-// FUNCTION FOR: lptx_conteur();
+// FUNCTION FOR: lptx_counter();
 // ------------------------------------------------------------------------------
 
-function lptx_retour_classe_maximum(){
+function lptx_returnClassMaximum($limit){
 	global $post;
 	$class = "";
-	if(strlen($post->post_title) > get_option('lptx_maximum')):
-		$class = "lptx-depasse";
+	if(strlen($post->post_title) > $limit):
+		$class = "lptx-over";
 	endif;
 	return $class;
 }
 
-function lptx_retour_longueur_titre(){
+function lptx_getTitleLength(){
 	global $post;
 	return strlen($post->post_title);
 }
@@ -188,9 +169,9 @@ function lptx_init(){
 // CALLBACK FUNCTION FOR: add_action('admin_menu', 'lptx_add_options_page');
 // ------------------------------------------------------------------------------
 
-// Add menu page
+// Add menu page 
 function lptx_add_options_page() {
-	add_options_page('Limit a Post Title to X Characters Options Page', 'Limit a Post Title to X Characters', 'manage_options', __FILE__, 'lptx_render_form');
+	add_options_page(__('Limit a Post Title to X Characters Options Page','lptx'), 'Limit a Post Title to X Characters', 'manage_options', __FILE__, 'lptx_render_form');
 }
 
 // ------------------------------------------------------------------------------
@@ -201,47 +182,38 @@ function lptx_add_options_page() {
 function lptx_render_form() {
 	?>
 	<div class="wrap">
-		
-		<!-- Display Plugin Icon, Header, and Description -->
 		<div class="icon32" id="icon-options-general"><br></div>
 		<h2>Limit a Post Title to X Characters</h2>
-		<p>Below are the optional setting that you can change to alter the default usage of the plugin.</p>
-
-		<!-- Beginning of the Plugin Options Form -->
+		<p><?php _e('Below are the optional setting that you can change to alter the default usage of the plugin.','lptx'); ?></p>
 		<form method="post" action="options.php">
 			<?php settings_fields('lptx_plugin_options'); ?>
 			<?php $options = get_option('lptx_options'); ?>
-
-			<!-- Table Structure Containing Form Controls -->
-			<!-- Each Plugin Option Defined on a New Table Row -->
 			<table class="form-table">
-
-				<!-- Textbox Control -->
 				<tr>
-					<th scope="row">Maximum allowed</th>
+					<th scope="row"><?php _e('Maximum allowed','lptx'); ?></th>
 					<td>
 						<input type="text" size="57" name="lptx_options[char_limit]" value="<?php echo $options['char_limit']; ?>" />
-                        <br /><span style="color:#666666;margin-left:2px;">Enter the maximum number of character allowed in the title of a post.</span>
+                        <br /><span style="color:#666666;margin-left:2px;"><?php _e('Enter the maximum number of character allowed in the title of a post.','lptx'); ?></span>
 					</td>
 				</tr>
 
 				<!-- Select Drop-Down Control -->
 				<tr>
-					<th scope="row">Disable limit for admins</th>
+					<th scope="row"><?php _e('Disable limit for admins','lptx'); ?></th>
 					<td>
 						<select name='lptx_options[admin_disable]'>
-							<option value='1' <?php selected('1', $options['admin_disable']); ?>>Yes</option>
-							<option value='2' <?php selected('2', $options['admin_disable']); ?>>No</option>
+							<option value='1' <?php selected('1', $options['admin_disable']); ?>><?php _e('Yes','lptx'); ?></option>
+							<option value='2' <?php selected('2', $options['admin_disable']); ?>><?php _e('No','lptx'); ?></option>
 						</select>
 					</td>
 				</tr>
 
 				<tr><td colspan="2"><div style="margin-top:10px;"></div></td></tr>
 				<tr valign="top" style="border-top:#dddddd 1px solid;">
-					<th scope="row">Database Options</th>
+					<th scope="row"><?php _e('Database Options','lptx'); ?></th>
 					<td>
-						<label><input name="lptx_options[chk_default_options_db]" type="checkbox" value="1" <?php if (isset($options['chk_default_options_db'])) { checked('1', $options['chk_default_options_db']); } ?> /> Restore defaults upon plugin deactivation/reactivation</label>
-						<br /><span style="color:#666666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</span>
+						<label><input name="lptx_options[chk_default_options_db]" type="checkbox" value="1" <?php if (isset($options['chk_default_options_db'])) { checked('1', $options['chk_default_options_db']); } ?> /> <?php _e('Restore defaults upon plugin deactivation/reactivation','lptx'); ?></label>
+						<br /><span style="color:#666666;margin-left:2px;"><?php _e('Only check this if you want to reset plugin settings upon Plugin reactivation','lptx'); ?></span>
 					</td>
 				</tr>
 			</table>
@@ -263,7 +235,7 @@ function lptx_validate_options($input) {
 function lptx_plugin_action_links( $links, $file ) {
 
 	if ( $file == plugin_basename( __FILE__ ) ) {
-		$lptx_links = '<a href="'.get_admin_url().'options-general.php?page=plugin-options-starter-kit/plugin-options-starter-kit.php">'.__('Settings').'</a>';
+		$lptx_links = '<a href="'.get_admin_url().'options-general.php?page=limit-a-post-title-to-x-characters/lptx.php">'.__('Settings').'</a>';
 		// make the 'Settings' link appear first
 		array_unshift( $links, $lptx_links );
 	}

@@ -1,27 +1,27 @@
-var unCompteur;
+var i;
 
 jQuery(document).ready(function(){
 	var maximum = jQuery('#lptx_maximum').val();
     jQuery('#title').keyup(function(){
-		verification_maximum(this);
+		checkIfMaximum(this);
 	});
-	function verification_maximum(elemId){
-		var conteur = jQuery(elemId).val().length;
-		unCompteur = jQuery(elemId).val().length;
-		if(conteur > maximum){
-			jQuery('#lptx-conteur').addClass('lptx-depasse');
+	function checkIfMaximum(elemId){
+		var counter = jQuery(elemId).val().length;
+		i = jQuery(elemId).val().length;
+		if(counter > maximum){
+			jQuery('#lptx-counter').addClass('lptx-over');
 		}else{
-			jQuery('#lptx-conteur').removeClass('lptx-depasse');
+			jQuery('#lptx-counter').removeClass('lptx-over');
 		}
-		jQuery('#lptx-conteur').html(conteur);
+		jQuery('#lptx-counter').html(counter);
 	}
-	jQuery('#vider-titre').click(function(){jQuery('#title').val("").focus();jQuery('#lptx-conteur').html(0);});
-    jQuery('#publish').mousedown(function() {
-		if(unCompteur < maximum){
-			//visa, ça va !
-			return false;
+	jQuery('#empty-title').click(function(){jQuery('#title').val("").focus();jQuery('#lptx-counter').html(0);});
+	jQuery('#publish').mousedown(function(){
+		if(i <= maximum){
+			//if we're not over the maximum allowed by the plugin, everything is fine. But you could do something here if you wanted.
+			return true;
 		}else{
-			alert('You are over the maximum allowed characters for the title!');
+			alert(traductionFromWP.alertMessage);
 			return false;
 
 		}
