@@ -75,9 +75,9 @@ function lptx_box_characterCount(){
 // ------------------------------------------------------------------------------
 function lptx_scriptInclusion(){
 	$options = get_option('lptx_options');
+	$traduction = array('alertMessage' => __('You are over the maximum allowed characters for the title!','lptx'));
 	if($options['admin_disable']==1) // if plugin is activated, do stuff !.
 	{
-		$traduction = array('alertMessage' => __('You are over the maximum allowed characters for the title!','lptx'));
 		if(!current_user_can('administrator'))
 		{
 			wp_enqueue_style('lptx_css',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/css/lptx-style.css');
