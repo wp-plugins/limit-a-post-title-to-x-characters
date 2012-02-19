@@ -4,13 +4,15 @@ Donate link: http://pasunecompagnie.com/limit-a-post-title-to-x-characters/
 Tags: post title, title, count, counter, twitter
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 1.2
+Stable tag: 1.3
 
 == Description ==
 
 Limit posts title length as defined in options. Shows the current character count and stops the publication process if the length goes over.
 
 Usefull to limit title characters dues to theme restrictions, or Twitter automatic posting, for examples.
+
+Included in the plugin folders are necessary files to translate this plugin to you own language. If you want to send me a translation, please contact me via the URL below.
 
 I can provide limited support <a href="http://pasunecompagnie.com/limit-a-post-title-to-x-characters/">here</a>. You can also submit bug reports to the same address.
 
@@ -35,6 +37,8 @@ Install this plugin by going to Plugins >> Add New >> and type this plugin's nam
 * Fixed a bug where counter would turn falsly red when opening an already saved post / draft.
 * Link to option page in the plugin menu is fixed.
 * Character verification checks if number of character is under or equal to the limit, and not only under it.
+* Added support for l18n with english as default language.
+* Translation added: fr_FR.
 
 = 1.2 =
 * Added an option page for the plugin.

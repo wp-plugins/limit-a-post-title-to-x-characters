@@ -3,7 +3,7 @@
 Plugin Name: Limit a Post Title to X Characters
 Plugin URI: http://pasunecompagnie.com/limit-a-post-title-to-x-characters/
 Description: Limit posts title length as defined in options. Shows the current character count and stops the publication process if the length goes over.
-Version: 1.2
+Version: 1.3
 Author: Jean-Philippe Murray
 Author URI: http://jpmurray.net/
 */
@@ -49,7 +49,7 @@ $options = get_option('lptx_options');
 
 // Set-up Action and Filter Hooks for the plugin itself
 add_action('add_meta_boxes', 'lptx_box_characterCount');
-add_action('init', 'lptx_scriptInclusion'); 	
+add_action('init', 'lptx_scriptsNl18n'); 	;
 
 // ------------------------------------------------------------------------------
 // CALLBACK FUNCTION FOR: add_action('add_meta_boxes', 'lptx_box_characterCount');
@@ -71,11 +71,15 @@ function lptx_box_characterCount(){
 }
 
 // ------------------------------------------------------------------------------
-// CALLBACK FUNCTION FOR: add_action('init', 'lptx_scriptInclusion');
+// CALLBACK FUNCTION FOR: add_action('init', 'lptx_scriptsNl18n');
 // ------------------------------------------------------------------------------
-function lptx_scriptInclusion(){
+function lptx_scriptsNl18n(){
 	$options = get_option('lptx_options');
 	$traduction = array('alertMessage' => __('You are over the maximum allowed characters for the title!','lptx'));
+	
+	$plugin_dir = basename(dirname(__FILE__)); 
+	load_plugin_textdomain( 'lptx', 'wp-content/plugins/'.$plugin_dir.'/languages', $plugin_dir.'/languages' ); 
+	
 	if($options['admin_disable']==1) // if plugin is activated, do stuff !.
 	{
 		if(!current_user_can('administrator'))
