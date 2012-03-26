@@ -2,6 +2,7 @@ var i;
 
 jQuery(document).ready(function(){
 	var maximum = jQuery('#lptx_maximum').val();
+	i = jQuery('#title').val().length;
     jQuery('#title').keyup(function(){
 		checkIfMaximum(this);
 	});

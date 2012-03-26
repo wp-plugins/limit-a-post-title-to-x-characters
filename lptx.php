@@ -3,7 +3,7 @@
 Plugin Name: Limit a Post Title to X Characters
 Plugin URI: http://pasunecompagnie.com/limit-a-post-title-to-x-characters/
 Description: Limit posts title length as defined in options. Shows the current character count and stops the publication process if the length goes over.
-Version: 1.3
+Version: 1.3.1
 Author: Jean-Philippe Murray
 Author URI: http://jpmurray.net/
 */
@@ -49,7 +49,7 @@ $options = get_option('lptx_options');
 
 // Set-up Action and Filter Hooks for the plugin itself
 add_action('add_meta_boxes', 'lptx_box_characterCount');
-add_action('init', 'lptx_scriptsNl18n'); 	;
+add_action('admin_print_scripts', 'lptx_scriptsNl18n'); 	;
 
 // ------------------------------------------------------------------------------
 // CALLBACK FUNCTION FOR: add_action('add_meta_boxes', 'lptx_box_characterCount');
@@ -85,14 +85,14 @@ function lptx_scriptsNl18n(){
 		if(!current_user_can('administrator'))
 		{
 			wp_enqueue_style('lptx_css',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/css/lptx-style.css');
-			wp_enqueue_script('lptx_js',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/js/lptx-script.js',array('jquery'),'1.a',true );
+			wp_enqueue_script('lptx_js',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/js/lptx-script.js',array('jquery'),'1.b',true );
 			wp_localize_script('lptx_js', 'traductionFromWP', $traduction ); 
 		}
 	}
 	else if($options['admin_disable']==2)
 	{
 		wp_enqueue_style('lptx_css',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/css/lptx-style.css');
-		wp_enqueue_script('lptx_js',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/js/lptx-script.js',array('jquery'),'1.a',true );
+		wp_enqueue_script('lptx_js',WP_PLUGIN_URL . '/limit-a-post-title-to-x-characters/js/lptx-script.js',array('jquery'),'1.b',true );
 		wp_localize_script('lptx_js', 'traductionFromWP', $traduction ); 
 	}
 }

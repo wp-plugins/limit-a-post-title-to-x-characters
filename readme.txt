@@ -4,7 +4,7 @@ Donate link: http://pasunecompagnie.com/limit-a-post-title-to-x-characters/
 Tags: post title, title, count, counter, twitter
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 
 == Description ==
 
@@ -20,8 +20,9 @@ I can provide limited support <a href="http://pasunecompagnie.com/limit-a-post-t
 
 Thanks to...
 
-* [Paul Solomon](http://InsiteWebsite.com/) *for tweaking the CSS and correcting some of my typos and spelling mistakes !*
-* [marklaramee](http://wordpress.org/support/profile/marklaramee) *for the bug hunt in the character count validation !*
+* [Paul Solomon](http://InsiteWebsite.com/) *for tweaking the CSS and correcting some of my typos and spelling mistakes; finding that the scripts where loading in the front end too.*
+* [marklaramee](http://wordpress.org/support/profile/marklaramee) *for the bug hunt in the character count validation.*
+* [Gabriel Serafini](http://wordpress.org/support/profile/gserafini) *for debugging character count validation in post edition.*
 
 == Installation ==
 
@@ -31,6 +32,10 @@ Install this plugin by going to Plugins >> Add New >> and type this plugin's nam
 
 
 == Changelog ==
+
+= 1.3.1 =
+* Bug fix: Custom javascript where loading in the front end pages as well, and it was not needed.
+* Bug fix: Character count would bug and think a title was under allowed character cound while editing an already submitted post.
 
 = 1.3 =
 * Changed everything in the source code that where referencing to french word so it's easier for the community to understand.
